@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IO_API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220306200643_6_03_2022_2")]
-    partial class _6_03_2022_2
+    [Migration("20220308211435_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,30 @@ namespace IO_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("IO_API.Models.Building", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Buildings");
+                });
+
             modelBuilder.Entity("IO_API.Models.Field", b =>
                 {
                     b.Property<int>("Id")
@@ -32,20 +56,28 @@ namespace IO_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AdjacentFieldID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuildingID")
+                    b.Property<int?>("AdjacentFieldId")
                         .HasColumnType("int");
 
                     b.Property<string>("DirectionOfAdjacency")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PlacedBuildingID")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("WorldId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AdjacentFieldId");
+
+                    b.HasIndex("PlacedBuildingID");
+
+                    b.HasIndex("WorldId");
 
                     b.ToTable("Fields");
                 });
@@ -102,6 +134,46 @@ namespace IO_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("IO_API.Models.World", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Worlds");
+                });
+
+            modelBuilder.Entity("IO_API.Models.Field", b =>
+                {
+                    b.HasOne("IO_API.Models.Field", "AdjacentField")
+                        .WithMany()
+                        .HasForeignKey("AdjacentFieldId");
+
+                    b.HasOne("IO_API.Models.Building", "PlacedBuilding")
+                        .WithMany()
+                        .HasForeignKey("PlacedBuildingID");
+
+                    b.HasOne("IO_API.Models.World", null)
+                        .WithMany("Fields")
+                        .HasForeignKey("WorldId");
+
+                    b.Navigation("AdjacentField");
+
+                    b.Navigation("PlacedBuilding");
+                });
+
+            modelBuilder.Entity("IO_API.Models.World", b =>
+                {
+                    b.Navigation("Fields");
                 });
 #pragma warning restore 612, 618
         }

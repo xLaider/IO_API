@@ -10,5 +10,8 @@ namespace IO_API.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Field> Fields { get; set; }
         public DbSet<Message> Messages { get; set; }
+
+        public DbSet<World> Worlds { get; set; }
+        public DbSet<Building> Buildings { get; set; }
     }
 }
