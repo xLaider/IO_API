@@ -15,7 +15,7 @@ namespace IO_API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly DataContext _context; //Depedency Injection
 
         public UsersController(DataContext context)
         {
@@ -41,6 +41,33 @@ namespace IO_API.Controllers
             }
          
             return user;
+        }
+        // GET: api/Users/5
+        [HttpGet("/email/{email}")]
+        public async Task<ActionResult<User>> GetUserByEmail(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        // GET: api/Users/5
+        [HttpGet("/nickname/{nickname}")]
+        public async Task<ActionResult<User>> GetUserByNickname(string nickname)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Nickname == nickname);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
         }
 
         // PUT: api/Users/5
@@ -105,5 +132,6 @@ namespace IO_API.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
+
     }
 }

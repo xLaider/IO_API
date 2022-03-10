@@ -43,6 +43,20 @@ namespace IO_API.Controllers
             return @field;
         }
 
+        // GET: api/Fields/5
+        [HttpGet("userID/{userID}")]
+        public async Task<ActionResult<IList<Field>>> GetFieldsByUserID(int userID)
+        {
+            var @field = await _context.Fields.Where(field => field.UserID == userID).ToListAsync();
+
+            if (@field == null)
+            {
+                return NotFound();
+            }
+
+            return @field;
+        }
+
         // PUT: api/Fields/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
