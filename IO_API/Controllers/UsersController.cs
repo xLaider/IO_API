@@ -69,7 +69,18 @@ namespace IO_API.Controllers
 
             return Ok(user);
         }
-
+        // GET: api/Users/6
+        [HttpGet("/GetUserByEmailAndPassword/{email}/{password}")]
+        public async Task<ActionResult<User>> GetUserByEmailAndPassword(string email,string password)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            
+            if(user.Password!=password)
+            {
+                return NotFound();
+            }
+            return user;
+        }
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
