@@ -9,5 +9,9 @@ namespace IO_API.Models
         public string Name { get; set; } = string.Empty;
         public string ImageName { get; set; } = string.Empty;
         public int Level { get; set; }
+        public int AccountingValue { get; set; }
+        public int AccountedCoins { get; set; }
+        public int NumberOfAccountings { get; set; }
+
     }
 }

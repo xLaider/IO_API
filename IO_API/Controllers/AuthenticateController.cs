@@ -114,6 +114,36 @@ namespace IO_API.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
+        [HttpPost]
+        [Route("register-IO_Service")]
+        public async Task<IActionResult> RegisterIOService([FromBody] RegisterModel model)
+        {
+            var userExists = await _userManager.FindByNameAsync(model.Username);
+            if (userExists != null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
+
+            IdentityUser user = new()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.Username
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed, please check user details and try again!" });
+
+            if (!await _roleManager.RoleExistsAsync(UserRoles.IOService))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.IOService));
+            }
+            if (await _roleManager.RoleExistsAsync(UserRoles.IOService))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.IOService);
+            }
+
+            return Ok(new Response { Status = "Success", Message = "User created successfully!" });
+        }
+
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
             var authSigninKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));

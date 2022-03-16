@@ -30,12 +30,6 @@ namespace IO_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("AccountedCoins")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AccountingValue")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -46,9 +40,6 @@ namespace IO_API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumberOfAccountings")
-                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
