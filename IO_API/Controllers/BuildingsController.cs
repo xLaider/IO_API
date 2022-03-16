@@ -45,66 +45,77 @@ namespace IO_API.Controllers
             return building;
         }
 
-        // PUT: api/Buildings/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBuilding(int id, Building building)
+        // GET: Buildings/Create
+        public IActionResult Create()
         {
-            if (id != building.ID)
-            {
-                return BadRequest();
-            }
+            return View();
+        }
 
-            _context.Entry(building).State = EntityState.Modified;
-
-            try
+        // POST: Buildings/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID,Name,ImageName,Level")] Building building)
+        {
+            if (ModelState.IsValid)
             {
+                _context.Add(building);
                 await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BuildingExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return View(building);
         }
 
-        [Authorize(Roles = UserRoles.IOService)]
-        [HttpPut("AccountCoinsOnAllBuildings")]
-        public async Task<IActionResult> AccountCoinsOnAllBuildings()
+        // GET: Buildings/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            await _context.Buildings.Where(x => x.NumberOfAccountings != 60).ForEachAsync(building =>
-            {
-                building.AccountedCoins += building.AccountingValue;
-                building.NumberOfAccountings++;
-            });
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
-
-        //[Authorize(Roles = UserRoles.IOService)]
-        [HttpPut("CleanBuildingAccountingDataByBuildingID/{id}")]
-        public async Task<IActionResult> CleanBuildingAccountingDataByBuildingID(int id)
-        {
-            var building = await _context.Buildings.FindAsync(id);
-
-            if (building == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            building.NumberOfAccountings = 0;
-            building.AccountedCoins = 0;
-            await _context.SaveChangesAsync();
+            var building = await _context.Buildings.FindAsync(id);
+            if (building == null)
+            {
+                return NotFound();
+            }
+            return View(building);
+        }
 
-            return NoContent();
+        // POST: Buildings/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,ImageName,Level")] Building building)
+        {
+            if (id != building.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(building);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BuildingExists(building.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(building);
         }
 
         // POST: api/Buildings
