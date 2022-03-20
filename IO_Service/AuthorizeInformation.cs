@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace IO_Service
 {
-    internal class LoginClass
+    internal class AuthorizeInformation
     {
-        public string userName = "IOSERVICEv2";
-        public string password = "QazWsxEdc!432";
+        public string token { get; set; }
+        public DateTime expiration { get; set; }
     }
 }

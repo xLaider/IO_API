@@ -136,9 +136,17 @@ namespace IO_API.Controllers
             {
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.IOService));
             }
+            if (!await _roleManager.RoleExistsAsync(UserRoles.User))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+            }
             if (await _roleManager.RoleExistsAsync(UserRoles.IOService))
             {
                 await _userManager.AddToRoleAsync(user, UserRoles.IOService);
+            }
+            if (await _roleManager.RoleExistsAsync(UserRoles.User))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.User);
             }
 
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });

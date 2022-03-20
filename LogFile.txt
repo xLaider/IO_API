@@ -354,3 +354,302 @@ System.Net.Http.HttpRequestException: No connection could be made because the ta
 2022-03-16 00:23:47.917 +01:00 [INF] Hosting environment: Development
 2022-03-16 00:23:47.917 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
 2022-03-16 00:23:47.917 +01:00 [DBG] Hosting started
+2022-03-16 23:33:15.714 +01:00 [INF] Starting up the service
+2022-03-16 23:33:15.968 +01:00 [DBG] Hosting starting
+2022-03-16 23:33:16.068 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-16 23:33:16.075 +01:00 [INF] Hosting environment: Development
+2022-03-16 23:33:16.076 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-16 23:33:16.076 +01:00 [DBG] Hosting started
+2022-03-16 23:38:52.154 +01:00 [INF] Starting up the service
+2022-03-16 23:38:52.403 +01:00 [DBG] Hosting starting
+2022-03-16 23:38:52.490 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-16 23:38:52.498 +01:00 [INF] Hosting environment: Development
+2022-03-16 23:38:52.498 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-16 23:38:52.498 +01:00 [DBG] Hosting started
+2022-03-16 23:39:15.982 +01:00 [ERR] BackgroundService failed
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: The best overloaded method match for 'System.Net.Http.Headers.AuthenticationHeaderValue.AuthenticationHeaderValue(string, string)' has some invalid arguments
+   at CallSite.Target(Closure , CallSite , Type , String , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute3[T0,T1,T2,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 63
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 40
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-16 23:39:16.129 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: The best overloaded method match for 'System.Net.Http.Headers.AuthenticationHeaderValue.AuthenticationHeaderValue(string, string)' has some invalid arguments
+   at CallSite.Target(Closure , CallSite , Type , String , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute3[T0,T1,T2,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 63
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 40
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-16 23:39:16.129 +01:00 [INF] Application is shutting down...
+2022-03-16 23:39:16.177 +01:00 [DBG] Hosting stopping
+2022-03-16 23:39:16.193 +01:00 [DBG] Hosting stopped
+2022-03-16 23:39:36.769 +01:00 [INF] Starting up the service
+2022-03-16 23:39:37.092 +01:00 [DBG] Hosting starting
+2022-03-16 23:39:37.170 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-16 23:39:37.177 +01:00 [INF] Hosting environment: Development
+2022-03-16 23:39:37.178 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-16 23:39:37.178 +01:00 [DBG] Hosting started
+2022-03-16 23:49:00.574 +01:00 [INF] Starting up the service
+2022-03-16 23:49:00.779 +01:00 [DBG] Hosting starting
+2022-03-16 23:49:00.854 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-16 23:49:00.862 +01:00 [INF] Hosting environment: Development
+2022-03-16 23:49:00.862 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-16 23:49:00.862 +01:00 [DBG] Hosting started
+2022-03-16 23:49:29.003 +01:00 [ERR] BackgroundService failed
+System.InvalidCastException: Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'IO_Service.AuthorizeInformation'.
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 63
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 41
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-16 23:49:29.038 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.InvalidCastException: Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'IO_Service.AuthorizeInformation'.
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 63
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 41
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-16 23:49:29.039 +01:00 [INF] Application is shutting down...
+2022-03-16 23:49:29.049 +01:00 [DBG] Hosting stopping
+2022-03-16 23:49:29.058 +01:00 [DBG] Hosting stopped
+2022-03-16 23:53:19.603 +01:00 [INF] Starting up the service
+2022-03-16 23:53:19.797 +01:00 [DBG] Hosting starting
+2022-03-16 23:53:19.866 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-16 23:53:19.873 +01:00 [INF] Hosting environment: Development
+2022-03-16 23:53:19.873 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-16 23:53:19.873 +01:00 [DBG] Hosting started
+2022-03-17 00:03:41.327 +01:00 [INF] Starting up the service
+2022-03-17 00:03:41.511 +01:00 [DBG] Hosting starting
+2022-03-17 00:03:44.463 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-17 00:03:44.469 +01:00 [INF] Hosting environment: Development
+2022-03-17 00:03:44.469 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-17 00:03:44.469 +01:00 [DBG] Hosting started
+2022-03-17 00:10:55.006 +01:00 [INF] Starting up the service
+2022-03-17 00:10:55.247 +01:00 [DBG] Hosting starting
+2022-03-17 00:11:01.662 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-17 00:11:01.669 +01:00 [INF] Hosting environment: Development
+2022-03-17 00:11:01.669 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-17 00:11:01.669 +01:00 [DBG] Hosting started
+2022-03-17 00:13:03.840 +01:00 [INF] Starting up the service
+2022-03-17 00:13:04.042 +01:00 [DBG] Hosting starting
+2022-03-17 00:13:07.584 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-17 00:13:07.589 +01:00 [INF] Hosting environment: Development
+2022-03-17 00:13:07.590 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-17 00:13:07.590 +01:00 [DBG] Hosting started
+2022-03-19 14:32:49.409 +01:00 [INF] Starting up the service
+2022-03-19 14:32:49.604 +01:00 [DBG] Hosting starting
+2022-03-19 14:32:53.132 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 14:32:53.139 +01:00 [INF] Hosting environment: Development
+2022-03-19 14:32:53.140 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 14:32:53.140 +01:00 [DBG] Hosting started
+2022-03-19 14:38:04.550 +01:00 [INF] Starting up the service
+2022-03-19 14:38:04.792 +01:00 [DBG] Hosting starting
+2022-03-19 14:38:07.628 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 14:38:07.634 +01:00 [INF] Hosting environment: Development
+2022-03-19 14:38:07.634 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 14:38:07.635 +01:00 [DBG] Hosting started
+2022-03-19 14:45:18.089 +01:00 [INF] Starting up the service
+2022-03-19 14:45:18.368 +01:00 [DBG] Hosting starting
+2022-03-19 14:47:07.974 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 14:47:07.978 +01:00 [INF] Hosting environment: Development
+2022-03-19 14:47:07.979 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 14:47:07.979 +01:00 [DBG] Hosting started
+2022-03-19 14:47:20.791 +01:00 [ERR] BackgroundService failed
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiI1NTQ3NDhlMS05NTBjLTQ2MGYtYjg2ZS0xYTUxOGQ0NWI3MDAiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDEyMzEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.6JNc4NPoyUD8xH_eA6i7S_D8HSznbPNsAqfbI3an4As' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 14:47:20.936 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiI1NTQ3NDhlMS05NTBjLTQ2MGYtYjg2ZS0xYTUxOGQ0NWI3MDAiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDEyMzEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.6JNc4NPoyUD8xH_eA6i7S_D8HSznbPNsAqfbI3an4As' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 14:47:20.936 +01:00 [INF] Application is shutting down...
+2022-03-19 14:47:20.947 +01:00 [DBG] Hosting stopping
+2022-03-19 14:47:20.968 +01:00 [DBG] Hosting stopped
+2022-03-19 14:59:43.432 +01:00 [INF] Starting up the service
+2022-03-19 14:59:43.617 +01:00 [DBG] Hosting starting
+2022-03-19 14:59:45.702 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 14:59:45.708 +01:00 [INF] Hosting environment: Development
+2022-03-19 14:59:45.708 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 14:59:45.708 +01:00 [DBG] Hosting started
+2022-03-19 14:59:56.755 +01:00 [ERR] BackgroundService failed
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiI5ZGYzZGIzNS0zZGZjLTQ1YzgtODVjNi03ZTFhNWEzMmY3M2YiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDE5ODksImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.nU3ZQA7oEw3k5KPYRe9yPwO4Pl-JNWyRLmmtGaBmUSc' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 14:59:56.783 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiI5ZGYzZGIzNS0zZGZjLTQ1YzgtODVjNi03ZTFhNWEzMmY3M2YiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDE5ODksImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.nU3ZQA7oEw3k5KPYRe9yPwO4Pl-JNWyRLmmtGaBmUSc' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 14:59:56.783 +01:00 [INF] Application is shutting down...
+2022-03-19 14:59:56.795 +01:00 [DBG] Hosting stopping
+2022-03-19 14:59:56.803 +01:00 [DBG] Hosting stopped
+2022-03-19 15:00:37.468 +01:00 [INF] Starting up the service
+2022-03-19 15:00:37.648 +01:00 [DBG] Hosting starting
+2022-03-19 15:00:41.852 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 15:00:41.858 +01:00 [INF] Hosting environment: Development
+2022-03-19 15:00:41.858 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 15:00:41.858 +01:00 [DBG] Hosting started
+2022-03-19 15:00:49.329 +01:00 [ERR] BackgroundService failed
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiI1MzI0YjBhZi01NjNhLTRiMTUtYjQ1Ny0yMjk0ZjM1MmU0ZGQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDIwNDIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9._WZ9b6fv7emZhs0RvTyGZnjE4fMdyk-pd9R76_Iw24c' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 15:00:49.356 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiI1MzI0YjBhZi01NjNhLTRiMTUtYjQ1Ny0yMjk0ZjM1MmU0ZGQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDIwNDIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9._WZ9b6fv7emZhs0RvTyGZnjE4fMdyk-pd9R76_Iw24c' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 15:00:49.356 +01:00 [INF] Application is shutting down...
+2022-03-19 15:00:49.356 +01:00 [DBG] Hosting stopping
+2022-03-19 15:00:49.360 +01:00 [DBG] Hosting stopped
+2022-03-19 15:02:01.166 +01:00 [INF] Starting up the service
+2022-03-19 15:02:01.357 +01:00 [DBG] Hosting starting
+2022-03-19 15:02:02.606 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 15:02:02.612 +01:00 [INF] Hosting environment: Development
+2022-03-19 15:02:02.612 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 15:02:02.612 +01:00 [DBG] Hosting started
+2022-03-19 15:02:07.197 +01:00 [ERR] BackgroundService failed
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiJlYjFjMzNhMC01OWMxLTRhM2EtOGUwMC0yOTIxNmFjMGRiZWIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDIxMjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9._sZ0ing_HJWenlDDxiTCHaN7X6KFwhJgJBnQD2nOFEE' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 15:02:07.224 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiJlYjFjMzNhMC01OWMxLTRhM2EtOGUwMC0yOTIxNmFjMGRiZWIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDIxMjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9._sZ0ing_HJWenlDDxiTCHaN7X6KFwhJgJBnQD2nOFEE' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 15:02:07.224 +01:00 [INF] Application is shutting down...
+2022-03-19 15:02:07.241 +01:00 [DBG] Hosting stopping
+2022-03-19 15:02:07.246 +01:00 [DBG] Hosting stopped
+2022-03-19 15:07:48.167 +01:00 [INF] Starting up the service
+2022-03-19 15:07:48.430 +01:00 [DBG] Hosting starting
+2022-03-19 15:08:05.926 +01:00 [INF] Starting up the service
+2022-03-19 15:08:06.197 +01:00 [DBG] Hosting starting
+2022-03-19 15:08:34.797 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 15:08:34.804 +01:00 [INF] Hosting environment: Development
+2022-03-19 15:08:34.805 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 15:08:34.805 +01:00 [DBG] Hosting started
+2022-03-19 15:42:56.778 +01:00 [INF] Starting up the service
+2022-03-19 15:42:56.997 +01:00 [DBG] Hosting starting
+2022-03-19 15:43:02.268 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 15:43:02.275 +01:00 [INF] Hosting environment: Development
+2022-03-19 15:43:02.276 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 15:43:02.276 +01:00 [DBG] Hosting started
+2022-03-19 15:43:07.951 +01:00 [ERR] BackgroundService failed
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiIwNDRiMjBlNC1hODI4LTRkYTYtYWUzYi04MThlY2MzZjczNDEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDQ1ODUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.tX9iz0pEXFe0ivKzdiAB9-Hb5_n6qXBHKEWYv1IRAxQ' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 15:43:07.984 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.FormatException: The format of value 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSU9TRVJWSUNFdjIiLCJqdGkiOiIwNDRiMjBlNC1hODI4LTRkYTYtYWUzYi04MThlY2MzZjczNDEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVXNlciIsIklPU2VydmljZSJdLCJleHAiOjE2NDc3MDQ1ODUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.tX9iz0pEXFe0ivKzdiAB9-Hb5_n6qXBHKEWYv1IRAxQ' is invalid.
+   at System.Net.Http.Headers.HeaderUtilities.CheckValidToken(String value, String parameterName)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme, String parameter)
+   at System.Net.Http.Headers.AuthenticationHeaderValue..ctor(String scheme)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 65
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 42
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 15:43:07.984 +01:00 [INF] Application is shutting down...
+2022-03-19 15:43:07.995 +01:00 [DBG] Hosting stopping
+2022-03-19 15:43:08.017 +01:00 [DBG] Hosting stopped
+2022-03-19 15:44:18.233 +01:00 [INF] Starting up the service
+2022-03-19 15:44:18.440 +01:00 [DBG] Hosting starting
+2022-03-19 15:44:18.516 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 15:44:18.522 +01:00 [INF] Hosting environment: Development
+2022-03-19 15:44:18.523 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 15:44:18.523 +01:00 [DBG] Hosting started
+2022-03-19 15:46:38.299 +01:00 [INF] Starting up the service
+2022-03-19 15:46:38.485 +01:00 [DBG] Hosting starting
+2022-03-19 15:46:38.556 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 15:46:38.562 +01:00 [INF] Hosting environment: Development
+2022-03-19 15:46:38.563 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 15:46:38.563 +01:00 [DBG] Hosting started
+2022-03-19 16:00:27.847 +01:00 [INF] Starting up the service
+2022-03-19 16:00:28.024 +01:00 [DBG] Hosting starting
+2022-03-19 16:00:28.092 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 16:00:28.097 +01:00 [INF] Hosting environment: Development
+2022-03-19 16:00:28.098 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 16:00:28.098 +01:00 [DBG] Hosting started
+2022-03-19 16:00:37.848 +01:00 [INF] Starting up the service
+2022-03-19 16:00:38.019 +01:00 [DBG] Hosting starting
+2022-03-19 16:00:38.084 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 16:00:38.090 +01:00 [INF] Hosting environment: Development
+2022-03-19 16:00:38.091 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 16:00:38.091 +01:00 [DBG] Hosting started
+2022-03-19 16:08:36.585 +01:00 [INF] Starting up the service
+2022-03-19 16:08:36.764 +01:00 [DBG] Hosting starting
+2022-03-19 16:08:36.837 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 16:08:36.843 +01:00 [INF] Hosting environment: Development
+2022-03-19 16:08:36.843 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 16:08:36.843 +01:00 [DBG] Hosting started
+2022-03-19 16:09:07.466 +01:00 [INF] Starting up the service
+2022-03-19 16:09:07.641 +01:00 [DBG] Hosting starting
+2022-03-19 16:09:07.711 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 16:09:07.718 +01:00 [INF] Hosting environment: Development
+2022-03-19 16:09:07.719 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 16:09:07.719 +01:00 [DBG] Hosting started
+2022-03-19 16:09:09.890 +01:00 [ERR] BackgroundService failed
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_BaseAddress(Uri value)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 67
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 43
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 16:09:09.920 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_BaseAddress(Uri value)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 67
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 43
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 16:09:09.920 +01:00 [INF] Application is shutting down...
+2022-03-19 16:09:09.921 +01:00 [DBG] Hosting stopping
+2022-03-19 16:09:09.924 +01:00 [DBG] Hosting stopped
+2022-03-19 16:09:28.318 +01:00 [INF] Starting up the service
+2022-03-19 16:09:28.501 +01:00 [DBG] Hosting starting
+2022-03-19 16:09:28.568 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-19 16:09:28.576 +01:00 [INF] Hosting environment: Development
+2022-03-19 16:09:28.576 +01:00 [INF] Content root path: C:\Users\Mateusz\source\repos\IO_API\IO_Service
+2022-03-19 16:09:28.576 +01:00 [DBG] Hosting started
+2022-03-19 16:09:36.030 +01:00 [ERR] BackgroundService failed
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_BaseAddress(Uri value)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 67
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 43
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 16:09:36.055 +01:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_BaseAddress(Uri value)
+   at IO_Service.Worker.renewTokenAsync() in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 67
+   at IO_Service.Worker.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\Mateusz\source\repos\IO_API\IO_Service\Worker.cs:line 43
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2022-03-19 16:09:36.055 +01:00 [INF] Application is shutting down...
+2022-03-19 16:09:36.067 +01:00 [DBG] Hosting stopping
+2022-03-19 16:09:36.077 +01:00 [DBG] Hosting stopped
