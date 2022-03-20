@@ -13,7 +13,7 @@ using IO_API.Auth;
 
 namespace IO_API.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+   //[Authorize(Roles = UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -112,6 +112,27 @@ namespace IO_API.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("/RankingScore/ByScore")]
+        public async Task<ActionResult<List<User>>> RankingScore()
+        {
+
+            var listrank = await _context.Users.OrderBy(x=>x.Score).Take(5).ToListAsync();
+            
+            return listrank;
+            
+        }
+
+        //GET: api/Users/7
+        [HttpGet("/RankingCoins/ByCoins")]
+
+        public async Task<ActionResult<List<User>>> RankingCoins()
+        {
+            var listrank = await _context.Users.OrderBy(x=>x.Coins).Take(5).ToListAsync();
+            
+            return listrank;
+
         }
 
         // POST: api/Users
