@@ -53,6 +53,7 @@ namespace IO_Service
 
         protected async Task<HttpResponseMessage> renewTokenAsync()
         {
+
             
             LoginClass loginClass = new LoginClass();
             loginClass.userName = "IOSERVICEv2";
@@ -64,10 +65,9 @@ namespace IO_Service
             var result = await client.PostAsync("http://localhost:5099/api/Authenticate/login", content);
             var jsonString = await result.Content.ReadAsStringAsync();
             AuthorizeInformation temporaryObject = JsonConvert.DeserializeObject<AuthorizeInformation>(jsonString);
-            client.BaseAddress = new Uri("http://localhost:5099/api/Buildings/AccountCoinsOnAllBuildings");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + temporaryObject.token);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer" ,temporaryObject.token);
+            
             return result;
             
         }
