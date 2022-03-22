@@ -1,4 +1,6 @@
 ﻿using IO_API.Auth;
+using IO_API.IRepositories;
+using IO_API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,15 +18,24 @@ namespace IO_API.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly DataContext _context;
+        private readonly IUserProgressInfoRepository _userProgressInfoRepository;
+        private readonly IWorldRepository _worldsRepository;
 
         public AuthenticateController(
+            DataContext context,
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IUserProgressInfoRepository userProgressInfoRepository,
+            IWorldRepository worldRepository)
         {
+            _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _userProgressInfoRepository = userProgressInfoRepository;
+            _worldsRepository = worldRepository;
         }
 
         [HttpPost]
@@ -45,10 +56,12 @@ namespace IO_API.Controllers
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
                 var token = GetToken(authClaims);
-                return Ok(new
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+                return Ok(new LoginResponse
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    Token = tokenString,
+                    UserID = user.Id,
+                    TokenExpiration = token.ValidTo
                 });
             }
             return Unauthorized();
@@ -68,9 +81,14 @@ namespace IO_API.Controllers
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username
             };
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded)
+            var resultUserCreation = await _userManager.CreateAsync(user, model.Password);
+            if (!resultUserCreation.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed, please check user details and try again!" });
+            
+            _context.UsersProgressInfo.Add(_userProgressInfoRepository.CreateNewUserProgressInfoWithUserID(user.Id));
+            var usersWorld = _worldsRepository.CreateNewWorldWithUserID(user.Id); //sprawdzic role Usera, zrobic rejestracje Admina
+             _context.Worlds.Add(usersWorld);
+            await _context.SaveChangesAsync();
 
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
@@ -92,7 +110,7 @@ namespace IO_API.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed, please check user details and try again!" });
-        
+
             if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
             {
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
@@ -110,6 +128,10 @@ namespace IO_API.Controllers
             {
                 await _userManager.AddToRoleAsync(user, UserRoles.User);
             }
+            _context.UsersProgressInfo.Add(_userProgressInfoRepository.CreateNewUserProgressInfoWithUserID(user.Id));
+            var usersWorld = _worldsRepository.CreateNewWorldWithUserID(user.Id);
+            _context.Worlds.Add(usersWorld);
+            await _context.SaveChangesAsync();
 
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
@@ -164,7 +186,7 @@ namespace IO_API.Controllers
                 signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256)
                 );
             return token;
-                
+
         }
     }
 }

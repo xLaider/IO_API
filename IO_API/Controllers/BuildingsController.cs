@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IO_API.Data;
 using IO_API.Models;
-using Microsoft.AspNetCore.Authorization;
-using IO_API.Auth;
 
 namespace IO_API.Controllers
 {
@@ -24,7 +22,7 @@ namespace IO_API.Controllers
             _context = context;
         }
 
-
+        // GET: api/Buildings
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Building>>> GetBuildings()
         {
@@ -75,18 +73,6 @@ namespace IO_API.Controllers
 
             return NoContent();
         }
-        [Authorize(Roles = UserRoles.IOService)]
-        [HttpPut("AccountCoinsOnAllBuildings")]
-        public async Task<IActionResult> AccountCoinsOnAllBuildings()
-        {
-            await _context.Buildings.Where(x => x.NumberOfAccountings != 60).ForEachAsync(building =>
-            {
-                building.AccountedCoins += building.AccountingValue;
-                building.NumberOfAccountings++;
-            });
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
 
         // POST: api/Buildings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -112,6 +98,18 @@ namespace IO_API.Controllers
             _context.Buildings.Remove(building);
             await _context.SaveChangesAsync();
 
+            return NoContent();
+        }
+
+        [HttpPut("AccountCoinsOnAllBuildings")]
+        public async Task<IActionResult> AccountCoinsOnAllBuildings()
+        {
+            await _context.Buildings.Where(x => x.NumberOfAccountings != 60).ForEachAsync(building =>
+            {
+                building.AccountedCoins += building.AccountingValue;
+                building.NumberOfAccountings++;
+            });
+            await _context.SaveChangesAsync();
             return NoContent();
         }
 

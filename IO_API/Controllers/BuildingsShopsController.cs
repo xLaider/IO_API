@@ -13,47 +13,47 @@ namespace IO_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FieldsController : ControllerBase
+    public class BuildingsShopsController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public FieldsController(DataContext context)
+        public BuildingsShopsController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/Fields
+        // GET: api/BuildingsShops
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Field>>> GetFields()
+        public async Task<ActionResult<IEnumerable<BuildingsShop>>> GetBuildingsShop()
         {
-            return await _context.Fields.ToListAsync();
+            return await _context.BuildingsShop.ToListAsync();
         }
 
-        // GET: api/Fields/5
+        // GET: api/BuildingsShops/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Field>> GetField(int id)
+        public async Task<ActionResult<BuildingsShop>> GetBuildingsShop(int id)
         {
-            var @field = await _context.Fields.Include(x=>x.PlacedBuilding).SingleOrDefaultAsync(x=>x.ID == id);
+            var buildingsShop = await _context.BuildingsShop.FindAsync(id);
 
-            if (@field == null)
+            if (buildingsShop == null)
             {
                 return NotFound();
             }
 
-            return @field;
+            return buildingsShop;
         }
 
-        // PUT: api/Fields/5
+        // PUT: api/BuildingsShops/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutField(int id, Field @field)
+        public async Task<IActionResult> PutBuildingsShop(int id, BuildingsShop buildingsShop)
         {
-            if (id != @field.ID)
+            if (id != buildingsShop.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(@field).State = EntityState.Modified;
+            _context.Entry(buildingsShop).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace IO_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FieldExists(id))
+                if (!BuildingsShopExists(id))
                 {
                     return NotFound();
                 }
@@ -74,36 +74,36 @@ namespace IO_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Fields
+        // POST: api/BuildingsShops
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Field>> PostField(Field @field)
+        public async Task<ActionResult<BuildingsShop>> PostBuildingsShop(BuildingsShop buildingsShop)
         {
-            _context.Fields.Add(@field);
+            _context.BuildingsShop.Add(buildingsShop);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetField", new { id = @field.ID }, @field);
+            return CreatedAtAction("GetBuildingsShop", new { id = buildingsShop.ID }, buildingsShop);
         }
 
-        // DELETE: api/Fields/5
+        // DELETE: api/BuildingsShops/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteField(int id)
+        public async Task<IActionResult> DeleteBuildingsShop(int id)
         {
-            var @field = await _context.Fields.FindAsync(id);
-            if (@field == null)
+            var buildingsShop = await _context.BuildingsShop.FindAsync(id);
+            if (buildingsShop == null)
             {
                 return NotFound();
             }
 
-            _context.Fields.Remove(@field);
+            _context.BuildingsShop.Remove(buildingsShop);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool FieldExists(int id)
+        private bool BuildingsShopExists(int id)
         {
-            return _context.Fields.Any(e => e.ID == id);
+            return _context.BuildingsShop.Any(e => e.ID == id);
         }
     }
 }

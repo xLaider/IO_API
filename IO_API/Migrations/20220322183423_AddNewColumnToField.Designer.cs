@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IO_API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220316222817_test")]
-    partial class test
+    [Migration("20220322183423_AddNewColumnToField")]
+    partial class AddNewColumnToField
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,24 @@ namespace IO_API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("IO_API.Models.BigField", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int?>("WorldID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("WorldID");
+
+                    b.ToTable("BigFields");
+                });
 
             modelBuilder.Entity("IO_API.Models.Building", b =>
                 {
@@ -42,14 +60,17 @@ namespace IO_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberOfAccountings")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PopulationNeeded")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PopulationValue")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -59,34 +80,21 @@ namespace IO_API.Migrations
 
             modelBuilder.Entity("IO_API.Models.Field", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("AdjacentFieldId")
+                    b.Property<int>("BigFieldID")
                         .HasColumnType("int");
-
-                    b.Property<string>("DirectionOfAdjacency")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PlacedBuildingID")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WorldId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdjacentFieldId");
+                    b.HasKey("ID");
 
                     b.HasIndex("PlacedBuildingID");
-
-                    b.HasIndex("WorldId");
 
                     b.ToTable("Fields");
                 });
@@ -114,49 +122,35 @@ namespace IO_API.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("IO_API.Models.User", b =>
+            modelBuilder.Entity("IO_API.Models.UsersProgressInfo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Coins")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<int>("Population")
+                        .HasColumnType("int");
 
-                    b.Property<long>("Coins")
-                        .HasColumnType("bigint");
+                    b.HasKey("UserID");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nickname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("Score")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
+                    b.ToTable("UsersProgressInfo");
                 });
 
             modelBuilder.Entity("IO_API.Models.World", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Worlds");
                 });
@@ -359,21 +353,18 @@ namespace IO_API.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("IO_API.Models.BigField", b =>
+                {
+                    b.HasOne("IO_API.Models.World", null)
+                        .WithMany("BigFields")
+                        .HasForeignKey("WorldID");
+                });
+
             modelBuilder.Entity("IO_API.Models.Field", b =>
                 {
-                    b.HasOne("IO_API.Models.Field", "AdjacentField")
-                        .WithMany()
-                        .HasForeignKey("AdjacentFieldId");
-
                     b.HasOne("IO_API.Models.Building", "PlacedBuilding")
                         .WithMany()
                         .HasForeignKey("PlacedBuildingID");
-
-                    b.HasOne("IO_API.Models.World", null)
-                        .WithMany("Fields")
-                        .HasForeignKey("WorldId");
-
-                    b.Navigation("AdjacentField");
 
                     b.Navigation("PlacedBuilding");
                 });
@@ -431,7 +422,7 @@ namespace IO_API.Migrations
 
             modelBuilder.Entity("IO_API.Models.World", b =>
                 {
-                    b.Navigation("Fields");
+                    b.Navigation("BigFields");
                 });
 #pragma warning restore 612, 618
         }

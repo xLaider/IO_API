@@ -2,11 +2,11 @@
 
 namespace IO_API.Models
 {
-    public class World
+    public class UsersProgressInfo
     {
         [Key]
-        public int ID { get; set; }
         public string UserID { get; set; }
-        public IList<BigField>? BigFields { get; set; }
+        public int Coins { get; set; }
+        public int Population { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IO_API.Data;
 using IO_API.Models;
+using IO_API.IRepositories;
 
 namespace IO_API.Controllers
 {
@@ -16,9 +17,12 @@ namespace IO_API.Controllers
     public class WorldsController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IWorldRepository _worldRepository;
 
-        public WorldsController(DataContext context)
+        public WorldsController(DataContext context,
+            IWorldRepository worldRepository)
         {
+            _worldRepository = worldRepository;
             _context = context;
         }
 
@@ -33,7 +37,7 @@ namespace IO_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<World>> GetWorld(int id)
         {
-            var world = await _context.Worlds.Include(x=>x.Fields).ThenInclude(x => x.PlacedBuilding).SingleOrDefaultAsync(x=>x.Id==id);
+            var world = await _context.Worlds.FindAsync(id);
 
             if (world == null)
             {
@@ -48,7 +52,7 @@ namespace IO_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWorld(int id, World world)
         {
-            if (id != world.Id)
+            if (id != world.ID)
             {
                 return BadRequest();
             }
@@ -82,7 +86,7 @@ namespace IO_API.Controllers
             _context.Worlds.Add(world);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetWorld", new { id = world.Id }, world);
+            return CreatedAtAction("GetWorld", new { id = world.ID }, world);
         }
 
         // DELETE: api/Worlds/5
@@ -101,9 +105,25 @@ namespace IO_API.Controllers
             return NoContent();
         }
 
+        [HttpGet("/GetUserEarningsByUserID/{id}")]
+        public async Task<ActionResult<int>> GetUserEarningsByUserID(string id)
+        {
+            var world = await _context.Worlds.Include(x=>x.BigFields).ThenInclude(x=>x.Fields).ThenInclude(x=>x.PlacedBuilding).
+                SingleOrDefaultAsync(x=>x.UserID == id);
+
+            if (world == null)
+            {
+                return NotFound();
+            }
+
+            int earnings = _worldRepository.CalculateEarningsFromWorld(world);
+
+            return Ok(earnings);
+        }
+
         private bool WorldExists(int id)
         {
-            return _context.Worlds.Any(e => e.Id == id);
+            return _context.Worlds.Any(e => e.ID == id);
         }
     }
 }
